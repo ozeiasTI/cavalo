@@ -1,18 +1,21 @@
-.formulario{
+.formulario {
     display: flex;
 }
-.bloco{
+
+.bloco {
     width: 49%;
     margin-right: 10px;
     display: flex;
     flex-direction: column;
 }
-label{
+
+label {
     color: teal;
     font-size: 30px;
     font-weight: bold;
 }
-input[type="text"]{
+
+input[type="text"] {
     padding: 5px;
     font-size: 20px;
     border-radius: 5px;
@@ -20,10 +23,12 @@ input[type="text"]{
     padding-left: 15px;
     margin: 10px 0;
 }
-input[type="text"]:focus{
+
+input[type="text"]:focus {
     outline: none;
 }
-select{
+
+select {
     padding: 5px;
     font-size: 20px;
     border-radius: 5px;
@@ -31,7 +36,12 @@ select{
     padding-left: 15px;
     margin: 10px 0;
 }
-.comojogar p{
+
+select:focus {
+    outline: none;
+}
+
+.comojogar p {
     text-align: center;
     font-size: 20px;
     margin: 30px 0;

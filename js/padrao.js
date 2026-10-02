@@ -4,6 +4,24 @@ const tabuleiro = document.getElementById("tabuleiro");
 const mutar = document.getElementById("mutar");
 const cor = "#50a798";
 
+function salvarDados() {
+    let consulta = localStorage.getItem("Jogo do Cavalo");
+
+    if (!consulta) {
+        const dadosParaSalvar = {
+            nomeDoJogador: "Usuário sem Nome",
+            nivelDeJogo: 6,
+            volumeDoJogo: 50
+        }
+
+        let pacote = JSON.stringify(dadosParaSalvar);
+
+        localStorage.setItem("Jogo do Cavalo", pacote)
+    }
+}
+
+salvarDados();
+
 // Quadradinho de Dados
 let quadradinho = document.querySelector(".quadradinho");
 let escolhatabuleiro = document.getElementById("escolhatabuleiro");
@@ -28,7 +46,10 @@ mutar.addEventListener("click", () => {
 // Função Raiz, START do jogo
 function iniciar() {
     //Aplicaçõs iniciais
-    const valorTamanhoSelecionado = 6;
+    let consultaBanco = localStorage.getItem("Jogo do Cavalo");
+    let pacote = JSON.parse(consultaBanco);
+
+    const valorTamanhoSelecionado = pacote.nivelDeJogo;
     quadradinho.style.display = "block";
     instrucoes.style.display = "none";
     tabuleiro.style.display = "grid";
@@ -108,7 +129,7 @@ function iniciar() {
 
                     let vitoria = verificarVitoria();
                     if (vitoria) {
-                        marcarplacar("Vitória");
+                        //marcarplacar("Vitória");
                         let fundo = document.getElementById("fundo");
                         let fundotexto = document.getElementById("fundotexto");
 
@@ -131,7 +152,7 @@ function iniciar() {
 
                     let derrota = verificarDerrota();
                     if (derrota == true) {
-                        marcarplacar("Derrota");
+                        //marcarplacar("Derrota");
                         let fundo = document.getElementById("fundo");
                         let fundotexto = document.getElementById("fundotexto");
 
@@ -312,13 +333,7 @@ function iniciar() {
     }
 
     function marcarplacar(statusJogo) {
-        let resultadoObtido = jogadas;
-        let status = statusJogo;
-        let data = new Date()
-
-        let resultadoFinal = JSON.stringify([data, resultadoObtido, status]);
-        localStorage.setItem("Jogo do Cavaelo", resultadoFinal);
-
+        pass
     }
 }
 
@@ -339,3 +354,4 @@ function sonMovimento() {
     const son = new Audio("songs/movimento.mp3");
     son.play();
 }
+
