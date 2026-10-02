@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do Cavalo</title>
+    <link rel="stylesheet" href="css/padrao.css">
+    <link rel="stylesheet" href="css/tarja.css">
+    <link rel="shortcut icon" href="img/cavalo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+
+    <div id="fundo">
+        <div id="fundotexto"></div>
+    </div>
+
+    <div class="tarja">
+        <p>Este jogo está em <strong class="marcacao">Atualização constante</strong>, no momento removemos os tabuleiros
+            [ 7, 8 ], e em breve as configurações voltaram a funcionar.</p>
+    </div>
+
+    <main>
+        <div id="instrucoes">
+            <h2>Bem vindo ao Jogo do Cavalo <i class="fa-solid fa-horse"></i></h2>
+            <div class="comojogar">
+                <h3># Como jogar:</h3>
+                <p><b>1-</b> Clique com o <strong>MOUSE</strong> na posição para a qual quer
+                    que o
+                    cavalo vá e assim
+                    sucessivamente.
+                </p>
+                <p><b>2-</b> Você só poderá movimentar o cavalo para uma posição na qual forme a letra
+                    <strong>L</strong>
+                    do ponto
+                    de
+                    partida, conforme imagem abaixo:
+                </p>
+                <img src="img/tabuleiro.png" width="150px">
+                <p><b>3-</b> A letra <strong>L</strong> poderá ser formada em qualquer direção, desde que dentro do
+                    tabuleiro.</p>
+                <h3># Como ganhar:</h3>
+                <p><b>1-</b> O jogador só ganha a partida quando o cavalo tiver preenchido <strong>todos os
+                        espaços</strong>, dando por
+                    encerrado o jogo.</p>
+                <h3># Resultado</h3>
+                <p><b>1-</b> Se o cavalo ficar preso em uma posição onde não puder se movimentar o jogo é encerrado
+                    e o
+                    jogador perde.
+                </p>
+
+                <div class="centro">
+                    <button onclick="iniciar()"><i class="fa-solid fa-play"></i> Iniciar Jogo</button>
+                    <button onclick="historico()"><i class="fa-solid fa-hard-drive"></i>Histórico</button>
+                    <button onclick="configuracoes()"><i class="fa-solid fa-gear"></i> Configuracoes</button>
+                </div>
+                <div class="muted">
+                    <i id="mutar" class="fa-solid fa-volume-xmark"></i>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="tabuleiro"></div>
+
+        <div class="quadradinho">
+            <h2>Placar <i class="fa-solid fa-arrows-to-circle"></i></h2>
+            <div class="acoes">
+                <p>Pontos: <strong id="pontos"> 0 </strong></p>
+                <p>Tabuleiro: <strong id="escolhatabuleiro"> 6 </strong></p>
+                <p>Música: <input type="range" id="volume" min="0" max="100" value="50"></p>
+                <button onclick="reiniciar()">Reiniciar</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/padrao.js"></script>
+    <script src="js/configuracoes.js"></script>
+    <script src="js/historico.js"></script>
+</body>
+
+</html>
