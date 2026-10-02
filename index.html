@@ -55,7 +55,7 @@
 
                 <div class="centro">
                     <button onclick="iniciar()"><i class="fa-solid fa-play"></i> Iniciar Jogo</button>
-                    <button onclick="historico()"><i class="fa-solid fa-hard-drive"></i>Histórico</button>
+                    <button onclick="historico()"><i class="fa-solid fa-hard-drive"></i> Histórico</button>
                     <button onclick="configuracoes()"><i class="fa-solid fa-gear"></i> Configuracoes</button>
                 </div>
                 <div class="muted">
@@ -79,8 +79,15 @@
     </main>
 
     <script src="js/padrao.js"></script>
-    <script src="js/configuracoes.js"></script>
     <script src="js/historico.js"></script>
+    <script>
+        function reiniciar() {
+            window.location.reload()
+        }
+        function configuracoes() {
+            window.location.href = "pages/configuracoes.html";
+        }
+    </script>
 </body>
 
 </html>

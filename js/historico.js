@@ -1,3 +1,3 @@
 function historico() {
-    alert("Essa função está em Desenvolvimento!")
+    window.location.href = "pages/historico.html";
 }
