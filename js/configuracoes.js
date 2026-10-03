@@ -26,7 +26,7 @@ function salvar() {
     let jogoDoCavalo = {
         nomeDoJogador: nome,
         nivelDeJogo: nivel,
-        volumeDoJogo: volume * 100
+        volumeDoJogo: volume * 100,
     }
 
     let pacote = JSON.stringify(jogoDoCavalo);

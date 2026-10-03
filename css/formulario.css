@@ -46,3 +46,21 @@ select:focus {
     font-size: 20px;
     margin: 30px 0;
 }
+
+.todo {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+}
+
+.parte {
+    gap: 5px;
+    width: 33%;
+    height: 520px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.parte h2 {
+    border-bottom: 2px solid teal;
+}

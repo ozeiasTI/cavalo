@@ -27,10 +27,15 @@ let quadradinho = document.querySelector(".quadradinho");
 let escolhatabuleiro = document.getElementById("escolhatabuleiro");
 let pontos = document.getElementById("pontos");
 
+//Consulta Dados banco
+let consulta = localStorage.getItem("Jogo do Cavalo");
+let pacote = JSON.parse(consulta);
+
 //Musica Menu
 const musicaMenu = new Audio("songs/menu.mp3");
 musicaMenu.loop = true;
 musicaMenu.play();
+musicaMenu.volume = pacote.volumeDoJogo / 100;
 musicatocando = true;
 
 mutar.addEventListener("click", () => {
@@ -129,7 +134,7 @@ function iniciar() {
 
                     let vitoria = verificarVitoria();
                     if (vitoria) {
-                        //marcarplacar("Vitória");
+                        marcarplacar("Vitória", historico);
                         let fundo = document.getElementById("fundo");
                         let fundotexto = document.getElementById("fundotexto");
 
@@ -152,7 +157,7 @@ function iniciar() {
 
                     let derrota = verificarDerrota();
                     if (derrota == true) {
-                        //marcarplacar("Derrota");
+                        marcarplacar("Derrota", historico);
                         let fundo = document.getElementById("fundo");
                         let fundotexto = document.getElementById("fundotexto");
 
@@ -332,26 +337,61 @@ function iniciar() {
         }
     }
 
-    function marcarplacar(statusJogo) {
-        pass
+    function marcarplacar(statusJogo, historico) {
+        let Data = new Date()
+        let dia = Data.getDate();
+        let mes = Data.getMonth();
+        let ano = Data.getFullYear();
+
+        let segundos = Data.getSeconds();
+        let minutos = Data.getMinutes();
+        let hora = Data.getHours();
+
+
+        let nome = pacote.nomeDoJogador;
+        let nivel = pacote.nivelDeJogo;
+
+        let dado = {
+            nome_jogador: nome,
+            nivel_jogado: nivel,
+            data_jogo: `${dia}/${mes}/${ano}`,
+            hora_jogo: `${hora}:${minutos}:${segundos}`,
+            status_jogo: statusJogo,
+            pontos: jogadas,
+            raio_x: historico
+        }
+
+        let consulta = localStorage.getItem("Histórico do Jogo do Cavalo");
+
+        if (!consulta) {
+            let dados = [];
+            dados.push(dado)
+            let empacotar = JSON.stringify(dados);
+            localStorage.setItem("Histórico do Jogo do Cavalo", empacotar);
+        } else {
+            let resultado = JSON.parse(consulta);
+            let dados = resultado;
+            dados.push(dado)
+            let empacotar = JSON.stringify(dados);
+            localStorage.setItem("Histórico do Jogo do Cavalo", empacotar);
+        }
+
     }
 }
 
 // Sons de jogo
 function tocarMusica() {
     const musica = new Audio("songs/fundo.mp3");
-    const slider = document.getElementById("volume");
 
     musica.loop = true;
     musica.play();
-
-    slider.addEventListener("input", (e) => {
-        musica.volume = e.target.value / 100;
-    })
+    musica.volume = pacote.volumeDoJogo / 100;
 }
 
 function sonMovimento() {
     const son = new Audio("songs/movimento.mp3");
+    son.volume = pacote.volumeDoJogo / 100;
     son.play();
+
 }
 

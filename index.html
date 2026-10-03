@@ -56,7 +56,7 @@
                 <div class="centro">
                     <button onclick="iniciar()"><i class="fa-solid fa-play"></i> Iniciar Jogo</button>
                     <button onclick="historico()"><i class="fa-solid fa-hard-drive"></i> Histórico</button>
-                    <button onclick="configuracoes()"><i class="fa-solid fa-gear"></i> Configuracoes</button>
+                    <button onclick="configuracoes()"><i class="fa-solid fa-gear"></i> Configurações</button>
                 </div>
                 <div class="muted">
                     <i id="mutar" class="fa-solid fa-volume-xmark"></i>
@@ -72,20 +72,25 @@
             <div class="acoes">
                 <p>Pontos: <strong id="pontos"> 0 </strong></p>
                 <p>Tabuleiro: <strong id="escolhatabuleiro"> 6 </strong></p>
-                <p>Música: <input type="range" id="volume" min="0" max="100" value="50"></p>
-                <button onclick="reiniciar()">Reiniciar</button>
+
+                <button onclick="sair()">Sair</button>
             </div>
         </div>
     </main>
 
     <script src="js/padrao.js"></script>
-    <script src="js/historico.js"></script>
     <script>
-        function reiniciar() {
-            window.location.reload()
+        function sair() {
+            if (confirm('Tem certeza que Deseja Sair, o progresso da Partida atual será perdido!')) {
+                window.location.reload();
+            }
+            return;
         }
         function configuracoes() {
             window.location.href = "pages/configuracoes.html";
+        }
+        function historico() {
+            window.location.href = "pages/historico.html";
         }
     </script>
 </body>

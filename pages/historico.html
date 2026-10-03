@@ -1,19 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histórico</title>
-    <link rel="shortcut icon" href="../img/cavalo.png" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurações</title>
+    <link rel="stylesheet" href="../css/padrao.css" />
+    <link rel="stylesheet" href="../css/formulario.css" />
+    <link rel="shortcut icon" href="../img/cavalo.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
         integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+    <main>
+        <div id="instrucoes">
+            <h2>Histórico <i class="fa-solid fa-hard-drive"></i></h2>
 
-    
+            <div class="todo">
+                <div class="parte">
+                    <h2>Fácil</h2>
+                    <div id="facil"></div>
+                </div>
+                <div class="parte">
+                    <h2>Médio</h2>
+                    <div id="medio"></div>
+                </div>
+                <div class="parte">
+                    <h2>Difícil</h2>
+                    <div id="dificil"></div>
+                </div>
+            </div>
+
+            <div class="comojogar">
+                <div class="centro">
+                    <button onclick="voltar()">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </button>
+                    <button onclick="configuracoes()"><i class="fa-solid fa-gear"></i> Configurações</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/historico.js"></script>
+    <script>
+        function configuracoes() {
+            window.location.href = "configuracoes.html";
+        }
+        function voltar() {
+            window.location.href = "../index.html";
+        }
+    </script>
 </body>
 
 </html>
