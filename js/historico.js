@@ -1,21 +1,69 @@
-let facil = document.getElementById("facil");
-let medio = document.getElementById("medio");
-let dificil = document.getElementById("dificil");
+let dados = document.getElementById("dados");
 
 let consulta = localStorage.getItem("Histórico do Jogo do Cavalo");
 let pacote = JSON.parse(consulta);
 
-let blocoFacil = pacote.filter(resultado => resultado.nivel_jogado === 6);
-let blocoMedio = pacote.filter(resultado => resultado.nivel_jogado === 7);
-let blocoDificil = pacote.filter(resultado => resultado.nivel_jogado === 8);
+if (pacote) {
+    for (let i = pacote.length - 1; i >= 0; i--) {
+        let item = document.createElement("div");
+        item.classList.add("quadrado");
 
-for (let i = 0; i < blocoFacil.length; i++) {
-    let item = document.createElement("div")
-    let nome = document.createElement("p")
+        let cabecalho = document.createElement("div");
+        cabecalho.classList.add("cabecalho");
 
-    nome.textContent = blocoFacil[i].nome_jogador
+        let nome = document.createElement("h3");
+        nome.textContent = pacote[i].nome_jogador;
+        let dataehora = document.createElement("p");
+        dataehora.textContent = pacote[i].data_jogo + " | " + pacote[i].hora_jogo;
 
-    item.appendChild(nome)
+        cabecalho.appendChild(nome);
+        cabecalho.appendChild(dataehora);
 
-    facil.appendChild(item)
+        let main = document.createElement("div");
+        main.classList.add("main");
+
+        let pontos = document.createElement("p");
+        pontos.textContent = "- Pontos: " + pacote[i].pontos;
+        let tabuleiro = document.createElement("p");
+
+        tabuleiro.textContent = "- Tabuleiro Selecionado: " + pacote[i].nivel_jogado;
+
+        let footer = document.createElement("div");
+        footer.classList.add("footer")
+
+        let statusDoJogo = document.createElement("h4");
+        statusDoJogo.textContent = pacote[i].status_jogo;
+
+        if (pacote[i].status_jogo === "Derrota") {
+            statusDoJogo.classList.add("derrota")
+        } else {
+            statusDoJogo.classList.add("vitoria")
+        }
+
+        let assistir = document.createElement("button");
+        assistir.classList.add("play")
+        assistir.id = i;
+        assistir.textContent = "Assistir Partida";
+
+        assistir.addEventListener("click", () => {
+            alert("Função em Desenvolvimento!")
+        })
+
+        footer.appendChild(statusDoJogo);
+        footer.appendChild(assistir);
+
+        main.appendChild(pontos);
+        main.appendChild(tabuleiro);
+        main.appendChild(footer);
+
+        item.appendChild(cabecalho);
+        item.appendChild(main);
+
+        dados.appendChild(item);
+    }
+} else {
+    let paragrafo = document.createElement("p");
+    paragrafo.textContent = "Você ainda não possui Histórico de Partidas.";
+
+    dados.appendChild(paragrafo)
 }

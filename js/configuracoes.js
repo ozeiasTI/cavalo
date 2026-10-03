@@ -5,6 +5,11 @@ function historico() {
     window.location.href = "historico.html";
 }
 
+function apagar() {
+    localStorage.removeItem("Histórico do Jogo do Cavalo");
+    alert("Todo o Histórico foi apagado!")
+}
+
 let nome = document.getElementById("nome");
 let nivel = document.getElementById("nivel");
 let slider = document.getElementById("volume");

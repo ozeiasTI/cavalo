@@ -38,11 +38,15 @@
             </select>
           </div>
         </div>
+
         <p>Aproveite para definir o <strong>Volume</strong> do seu jogo.</p>
 
         <div class="bloco">
           <input type="range" id="volume" min="0" max="100" value="50">
         </div>
+
+        <p>Você poderá <strong>apagar todo o Histórico</strong> clicando aqui: <input type="submit" onclick="apagar()"
+            value="Apagar"></p>
 
         <div class="centro">
           <button onclick="voltar()">
@@ -51,6 +55,7 @@
           <button onclick="historico()">
             <i class="fa-solid fa-hard-drive"></i> Histórico
           </button>
+
           <button onclick="salvar()"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
         </div>
       </div>

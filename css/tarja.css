@@ -4,6 +4,7 @@
     width: 100%;
     background-color: white;
     padding: 10px;
+    display: none;
 }
 
 .tarja p {
