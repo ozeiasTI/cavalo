@@ -7,5 +7,29 @@
     display: none;
     justify-content: center;
     align-items: center;
+}
 
+#tabuleiro {
+    display: grid;
+    border-radius: 10px;
+    gap: 5px;
+    padding: 5px;
+    background-color: #ddd;
+    user-select: none;
+}
+
+.celula {
+    background-color: #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+.celula:hover {
+    background-color: #aaa;
 }
