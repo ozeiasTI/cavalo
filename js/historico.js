@@ -80,8 +80,6 @@ function assitirPartida(dados){
     tabuleiro.innerHTML = "";
     tela.style.display = "flex";
 
-    console.log(dados);
-
     let tamanho = dados.nivel_jogado;
     let historico = dados.raio_x;
 
@@ -99,6 +97,7 @@ function assitirPartida(dados){
 
     }
 
+    console.log(historico)
     for(let j = 0; j < historico.length; j++){
         let itemParaPintar = historico[j];
 
@@ -115,7 +114,7 @@ function assitirPartida(dados){
     }
 
     tela.addEventListener("click", () =>{
-        tela.style.display = "none";
+        window.location.reload();
     });
 
 }
