@@ -2,6 +2,7 @@
 const instrucoes = document.getElementById("instrucoes");
 const tabuleiro = document.getElementById("tabuleiro");
 const mutar = document.getElementById("mutar");
+let dicas = document.getElementById("dicas");
 const cor = "#50a798";
 
 function salvarDados() {
@@ -55,6 +56,7 @@ function iniciar() {
     let pacote = JSON.parse(consultaBanco);
 
     const valorTamanhoSelecionado = pacote.nivelDeJogo;
+
     quadradinho.style.display = "block";
     instrucoes.style.display = "none";
     tabuleiro.style.display = "grid";
@@ -90,6 +92,12 @@ function iniciar() {
         espaco.id = i;
 
         espaco.addEventListener("click", () => {
+            //Dicas
+            for (let i = 0; i < tamanho; i++) {
+                let ajustarBorda = document.getElementById(i);
+                ajustarBorda.style.border = "#bbb";
+                ajustarBorda.style.boxShadow = "none";
+            }
 
             let img = document.createElement('img');
             img.src = "img/cavalo.png";
@@ -106,6 +114,29 @@ function iniciar() {
                 pontos.textContent = jogadas;
 
                 espaco.appendChild(img);
+                //Dicas
+                let Array_C = [];
+                for (let i = 0; i < arrayPossibilidades.length; i++) {
+                    let encontrado = false;
+
+                    for (let j = 0; j < historico.length; j++) {
+                        if (arrayPossibilidades[i] === historico[j]) {
+                            encontrado = true;
+                            break;
+                        }
+                    }
+                    if (encontrado === false) {
+                        Array_C.push(arrayPossibilidades[i])
+                    }
+                }
+                if (dicas.checked == true) {
+                    for (let i = 0; i < Array_C.length; i++) {
+                        let elementoPintar = document.getElementById(Array_C[i]);
+                        elementoPintar.style.border = "2px solid #1b18c7";
+                        elementoPintar.style.boxShadow = "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset";
+                    }
+                }
+
             } else {
                 let seTem = arrayPossibilidades.includes(i);
 
@@ -177,8 +208,31 @@ function iniciar() {
                             window.location.reload();
                         })
                     }
+
+                    //Dicas
+                    let Array_C = [];
+                    for (let i = 0; i < arrayPossibilidades.length; i++) {
+                        let encontrado = false;
+
+                        for (let j = 0; j < historico.length; j++) {
+                            if (arrayPossibilidades[i] === historico[j]) {
+                                encontrado = true;
+                                break;
+                            }
+                        }
+                        if (encontrado === false) {
+                            Array_C.push(arrayPossibilidades[i])
+                        }
+                    }
+                    if (dicas.checked == true) {
+                        for (let i = 0; i < Array_C.length; i++) {
+                            let elementoPintar = document.getElementById(Array_C[i]);
+                            elementoPintar.style.border = "2px solid #1b18c7";
+                            elementoPintar.style.boxShadow = "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset";
+                        }
+                    }
                 } else {
-                    espaco.style.border = "2px solid #f5576c";
+                    espaco.style.border = "3px solid #f5576c";
                     setTimeout(function () {
                         espaco.style.borderColor = "#bbb";
                     }, 500)
