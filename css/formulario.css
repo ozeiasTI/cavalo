@@ -1,10 +1,10 @@
 .formulario {
     display: flex;
+    gap: 10px;
 }
 
 .bloco {
     width: 49%;
-    margin-right: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -174,4 +174,161 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: rgb(255, 0, 0);
+}
+
+.comojogar p {
+    text-align: left;
+}
+
+.formulario {
+    padding: 16px;
+    border: 1px solid var(--paper-edge);
+    border-radius: 9px;
+    background-color: #e9eee5;
+}
+
+label {
+    color: var(--jade-dark);
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+input[type="text"],
+select {
+    min-height: 46px;
+    border: 1px solid #cbd7c9;
+    border-radius: 6px;
+    background-color: var(--paper);
+    color: var(--ink);
+    font: 500 16px "DM Sans", "Segoe UI", sans-serif;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: 2px solid var(--jade);
+    outline-offset: 1px;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--jade);
+}
+
+#dados {
+    gap: 9px;
+    max-height: min(600px, 62vh);
+}
+
+.quadrado {
+    padding: 12px;
+    border: 1px solid var(--paper-edge);
+    border-radius: 8px;
+    background-color: #e9eee5;
+    box-shadow: none;
+    transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.quadrado:hover {
+    border-color: #9ab89c;
+    background-color: #f7f8f3;
+    box-shadow: none;
+}
+
+.cabecalho h3,
+.main p {
+    color: var(--ink);
+}
+
+.cabecalho p {
+    color: var(--ink-soft);
+}
+
+.derrota {
+    color: #a63e32;
+    background-color: #f7ddd7;
+}
+
+.vitoria {
+    color: var(--jade-dark);
+    background-color: #dcebdc;
+}
+
+.play {
+    min-height: 40px;
+    border-radius: 6px;
+    background-color: var(--jade-dark);
+    font: 700 13px "DM Sans", "Segoe UI", sans-serif;
+}
+
+.play:hover {
+    background-color: var(--jade);
+}
+
+input[type="submit"] {
+    min-height: 38px;
+    border-radius: 6px;
+    background-color: var(--coral);
+    font: 700 14px "DM Sans", "Segoe UI", sans-serif;
+}
+
+input[type="submit"]:hover {
+    background-color: #d85f4c;
+}
+
+::-webkit-scrollbar-track {
+    background: #e5ebe1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7e9c87;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--jade);
+}
+
+@media (max-width: 700px) {
+    .footer {
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .play {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .formulario {
+        flex-direction: column;
+    }
+
+    .bloco {
+        width: 100%;
+    }
+
+    label {
+        font-size: 24px;
+    }
+
+    .comojogar p {
+        font-size: 17px;
+        margin: 18px 0;
+    }
+
+    #dados {
+        max-height: 55vh;
+    }
+
+    .cabecalho {
+        flex-wrap: wrap;
+        gap: 4px 10px;
+    }
+
+    .cabecalho h3,
+    .cabecalho p {
+        overflow-wrap: anywhere;
+    }
 }

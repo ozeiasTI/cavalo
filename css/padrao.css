@@ -7,7 +7,8 @@
 body {
     background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 24px 16px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -17,6 +18,9 @@ body {
 main {
     display: flex;
     gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 #fundo {
@@ -61,6 +65,8 @@ main {
 
 #tabuleiro {
     display: none;
+    width: min(94vw, 520px);
+    aspect-ratio: 1;
     border-radius: 10px;
     gap: 5px;
     padding: 5px;
@@ -72,7 +78,7 @@ main {
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 900px;
+    width: min(900px, 100%);
     border-radius: 10px;
     gap: 5px;
     padding: 15px;
@@ -170,10 +176,16 @@ main {
     justify-content: center;
     border-radius: 5px;
     cursor: pointer;
+    touch-action: manipulation;
 }
 
 .celula:hover {
     background-color: #aaa;
+}
+
+.celula img {
+    max-width: 75%;
+    height: auto;
 }
 
 .quadradinho {
@@ -203,4 +215,393 @@ main {
     width: 15px;
     height: 15px;
     margin-left: 10px;
+}
+
+@media (max-width: 700px) {
+    body {
+        justify-content: flex-start;
+        padding: 16px 10px;
+    }
+
+    main {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    #instrucoes {
+        padding: 12px;
+    }
+
+    #instrucoes h2,
+    .quadradinho h2 {
+        font-size: clamp(24px, 7vw, 34px);
+    }
+
+    .comojogar {
+        padding: 4px;
+    }
+
+    .comojogar p {
+        font-size: 16px;
+    }
+
+    .comojogar strong {
+        font-size: 16px;
+    }
+
+    .centro {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .comojogar button {
+        width: min(100%, 300px);
+        margin: 4px 0;
+        font-size: 19px;
+    }
+
+    .muted {
+        position: static;
+        align-self: flex-end;
+        font-size: 28px;
+        margin: 10px 0 0;
+    }
+
+    .quadradinho {
+        width: min(100%, 520px);
+    }
+
+    .acoes {
+        padding: 10px 14px;
+    }
+
+    #tabuleiro {
+        width: min(96vw, 520px);
+        gap: 3px;
+        padding: 4px;
+    }
+
+    .celula {
+        min-width: 0;
+        min-height: 0;
+        border-radius: 4px;
+    }
+}
+
+@media (max-width: 380px) {
+    .comojogar img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .acoes p {
+        font-size: 18px;
+    }
+}
+
+:root {
+    --ink: #172521;
+    --ink-soft: #52635b;
+    --night: #10231f;
+    --night-raised: #19342d;
+    --jade: #246b52;
+    --jade-dark: #174b3a;
+    --lime: #c5ed75;
+    --coral: #ee765f;
+    --paper: #f4f6ef;
+    --paper-edge: #dce4d8;
+    --tile-light: #dcebdc;
+    --tile-dark: #718f7e;
+}
+
+body {
+    color: var(--ink);
+    font-family: "DM Sans", "Segoe UI", sans-serif;
+    background-color: var(--night);
+    background-image: linear-gradient(rgba(222, 241, 215, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(222, 241, 215, 0.035) 1px, transparent 1px);
+    background-size: 36px 36px;
+}
+
+main {
+    gap: 28px;
+    max-width: 1180px;
+}
+
+#instrucoes {
+    border: 1px solid var(--paper-edge);
+    border-radius: 14px;
+    padding: clamp(18px, 3vw, 34px);
+    background-color: var(--paper);
+    box-shadow: 0 24px 65px rgba(1, 12, 9, 0.28);
+    animation: surface-in 420ms ease both;
+}
+
+#instrucoes h2,
+.quadradinho h2 {
+    margin: 5px 0 12px;
+    color: var(--ink);
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-style: normal;
+    font-weight: 800;
+    line-height: 0.98;
+}
+
+#instrucoes h2 i,
+.quadradinho h2 i {
+    color: var(--jade);
+}
+
+.comojogar {
+    padding: 8px 0 0;
+}
+
+.comojogar h3 {
+    margin: 18px 0 4px;
+    padding: 0;
+    color: var(--jade-dark);
+    background: none;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.comojogar p {
+    margin: 8px 0;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.comojogar strong {
+    color: var(--jade-dark);
+    background-color: #dcebdc;
+    font-size: 15px;
+}
+
+.centro {
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.comojogar button {
+    width: auto;
+    min-height: 46px;
+    margin: 0;
+    padding: 12px 18px;
+    border-radius: 7px;
+    background-color: var(--jade-dark);
+    box-shadow: 0 5px 12px rgba(23, 75, 58, 0.14);
+    font: 700 15px "DM Sans", "Segoe UI", sans-serif;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.comojogar button:hover {
+    background-color: var(--jade);
+    box-shadow: 0 8px 18px rgba(23, 75, 58, 0.2);
+    transform: translateY(-1px);
+}
+
+#tabuleiro {
+    width: min(94vw, 570px);
+    gap: 6px;
+    padding: 9px;
+    border: 1px solid rgba(213, 241, 213, 0.2);
+    border-radius: 18px;
+    background-color: var(--night-raised);
+    box-shadow: 0 24px 65px rgba(1, 12, 9, 0.38), 0 0 0 7px rgba(223, 243, 219, 0.035);
+}
+
+.celula {
+    border: 2px solid transparent;
+    border-radius: 7px;
+    transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.celula.casa-clara {
+    background-color: var(--tile-light);
+}
+
+.celula.casa-escura {
+    background-color: var(--tile-dark);
+}
+
+.celula:hover,
+.celula:focus-visible {
+    filter: brightness(1.08);
+    outline: 2px solid var(--lime);
+    outline-offset: -3px;
+}
+
+.celula img {
+    filter: drop-shadow(0 3px 2px rgba(31, 35, 20, 0.2));
+}
+
+.quadradinho {
+    width: 260px;
+    padding: 18px;
+    border: 1px solid var(--paper-edge);
+    border-radius: 12px;
+    background-color: var(--paper);
+    box-shadow: 0 20px 48px rgba(1, 12, 9, 0.22);
+    animation: surface-in 420ms ease both;
+}
+
+.quadradinho h2 {
+    font-size: 30px;
+}
+
+.acoes {
+    padding: 6px 2px 0;
+}
+
+.acoes p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 0;
+    padding: 13px 0;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--paper-edge);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.acoes p strong {
+    color: var(--ink);
+    font-size: 18px;
+}
+
+#dicas {
+    width: 18px;
+    height: 18px;
+    margin-left: auto;
+    accent-color: var(--jade);
+}
+
+.acoes button,
+#fundotexto button {
+    min-width: 112px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background-color: var(--coral);
+    font: 700 15px "DM Sans", "Segoe UI", sans-serif;
+}
+
+.acoes button:hover,
+#fundotexto button:hover {
+    background-color: #d85f4c;
+}
+
+#fundo {
+    position: fixed;
+    inset: 0;
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(5, 18, 15, 0.76);
+    backdrop-filter: blur(8px);
+}
+
+#fundotexto {
+    gap: 18px;
+    width: min(100%, 330px);
+    min-height: 250px;
+    height: auto;
+    margin: 0;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+    background-color: var(--paper);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.muted {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    margin: 0;
+    border: 1px solid rgba(228, 245, 229, 0.18);
+    border-radius: 9px;
+    background-color: var(--night-raised);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+}
+
+.muted i {
+    color: var(--lime);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--coral);
+    outline-offset: 3px;
+}
+
+@keyframes surface-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 700px) {
+    .comojogar button {
+        width: min(100%, 300px);
+        margin: 0;
+        font-size: 15px;
+    }
+
+    #tabuleiro {
+        width: min(96vw, 570px);
+        gap: 4px;
+        padding: 6px;
+    }
+
+    .celula {
+        border-radius: 5px;
+    }
+
+    .quadradinho {
+        width: min(100%, 520px);
+    }
+
+    .acoes button {
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    .muted {
+        right: 12px;
+        bottom: 12px;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }

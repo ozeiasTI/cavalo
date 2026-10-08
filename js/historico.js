@@ -73,7 +73,7 @@ if (pacote) {
     dados.appendChild(paragrafo)
 }
 
-const cor = "#50a798";
+const cor = "#c5ed75";
 
 function assitirPartida(dados){
     let contador = 1;
@@ -83,21 +83,21 @@ function assitirPartida(dados){
     let tamanho = dados.nivel_jogado;
     let historico = dados.raio_x;
 
-    tabuleiro.style.gridTemplateColumns = `repeat(${tamanho}, 80px)`;
-    tabuleiro.style.gridTemplateRows = `repeat(${tamanho}, 80px)`;
+    tabuleiro.style.gridTemplateColumns = `repeat(${tamanho}, minmax(0, 1fr))`;
+    tabuleiro.style.gridTemplateRows = `repeat(${tamanho}, minmax(0, 1fr))`;
 
     let jogadas = tamanho * tamanho;
 
     for(let i = 0; i < jogadas; i++){
         celula = document.createElement("div");
         celula.classList.add("celula");
+        celula.classList.add(Math.floor(i / tamanho) % 2 === i % tamanho % 2 ? "casa-clara" : "casa-escura");
         celula.id = i;
 
         tabuleiro.appendChild(celula);
 
     }
 
-    console.log(historico)
     for(let j = 0; j < historico.length; j++){
         let itemParaPintar = historico[j];
 

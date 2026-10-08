@@ -3,7 +3,7 @@ const instrucoes = document.getElementById("instrucoes");
 const tabuleiro = document.getElementById("tabuleiro");
 const mutar = document.getElementById("mutar");
 let dicas = document.getElementById("dicas");
-const cor = "#50a798";
+const cor = "#c5ed75";
 
 function salvarDados() {
     let consulta = localStorage.getItem("Jogo do Cavalo");
@@ -60,8 +60,8 @@ function iniciar() {
     quadradinho.style.display = "block";
     instrucoes.style.display = "none";
     tabuleiro.style.display = "grid";
-    tabuleiro.style.gridTemplateColumns = `repeat(${valorTamanhoSelecionado}, 80px)`;
-    tabuleiro.style.gridTemplateRows = `repeat(${valorTamanhoSelecionado}, 80px)`;
+    tabuleiro.style.gridTemplateColumns = `repeat(${valorTamanhoSelecionado}, minmax(0, 1fr))`;
+    tabuleiro.style.gridTemplateRows = `repeat(${valorTamanhoSelecionado}, minmax(0, 1fr))`;
     escolhatabuleiro.textContent = valorTamanhoSelecionado;
 
     musicaMenu.pause();
@@ -88,6 +88,7 @@ function iniciar() {
         let espaco = document.createElement("div");
 
         espaco.classList.add("celula");
+        espaco.classList.add(Math.floor(i / valorTamanhoSelecionado) % 2 === i % valorTamanhoSelecionado % 2 ? "casa-clara" : "casa-escura");
 
         espaco.id = i;
 
@@ -95,7 +96,7 @@ function iniciar() {
             //Dicas
             for (let i = 0; i < tamanho; i++) {
                 let ajustarBorda = document.getElementById(i);
-                ajustarBorda.style.border = "#bbb";
+                ajustarBorda.style.border = "2px solid transparent";
                 ajustarBorda.style.boxShadow = "none";
             }
 
@@ -132,7 +133,7 @@ function iniciar() {
                 if (dicas.checked == true) {
                     for (let i = 0; i < Array_C.length; i++) {
                         let elementoPintar = document.getElementById(Array_C[i]);
-                        elementoPintar.style.border = "2px solid #1b18c7";
+                        elementoPintar.style.border = "2px solid #ee765f";
                         elementoPintar.style.boxShadow = "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset";
                     }
                 }
@@ -227,14 +228,14 @@ function iniciar() {
                     if (dicas.checked == true) {
                         for (let i = 0; i < Array_C.length; i++) {
                             let elementoPintar = document.getElementById(Array_C[i]);
-                            elementoPintar.style.border = "2px solid #1b18c7";
+                            elementoPintar.style.border = "2px solid #ee765f";
                             elementoPintar.style.boxShadow = "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset";
                         }
                     }
                 } else {
                     espaco.style.border = "3px solid #f5576c";
                     setTimeout(function () {
-                        espaco.style.borderColor = "#bbb";
+                        espaco.style.borderColor = "transparent";
                     }, 500)
 
                 }
